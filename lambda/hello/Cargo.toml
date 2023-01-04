@@ -1,0 +1,15 @@
+[package]
+name = "hello"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+lambda_runtime = "0.7.1"
+log = "0.4.14"
+serde = "1.0.126"
+simple_logger = "4.0.0"
+tokio = "1.6.1"
+aws_lambda_events = "0.7.2"
+http = "0.2.4"

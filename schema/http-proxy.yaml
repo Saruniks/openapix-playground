@@ -1,0 +1,49 @@
+openapi: 3.0.3
+info:
+  title: Hello API
+  description: Defines an example “Hello World” API
+  version: "0.0.1"
+paths:
+  "/":
+    get:
+      security:
+        - MyCustomAuthorizer: ["test/read"] # add scope
+      operationId: sayHello
+      summary: Say Hello
+      description: Prints out a greeting
+      parameters:
+        - in: header
+          name: X-Request-ID
+          schema:
+            type: string
+            default: some-id
+          required: true
+        - in: header
+          name: Access-Control-Allow-Headers
+          schema:
+            type: string
+            default: content-type, authorization
+          required: true
+      responses:
+        "200":
+          description: Successful response
+          content:
+            "text/plain":
+              schema:
+                description: Response body
+                type: string
+                example: Hello World!
+components:
+  securitySchemes:
+    MyCustomAuthorizer:
+      type: apiKey
+      name: Authorization
+      in: header
+      # type: http
+      # scheme: bearer
+      # name: Authorization
+      # bearerFormat: Access Token    # optional, arbitrary value for documentation purposes
+    # MyCognitoAuthorizer:
+    #   type: apiKey
+    #   name: X-API-KEY
+    #   in: header
